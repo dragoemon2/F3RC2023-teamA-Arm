@@ -9,6 +9,7 @@ class ServoMotor{
         ServoMotor(PinName pin, float pwm_cycle=20, float pulse_width_min=0.5, float pulse_width_max=2.4, float range=180);
         float A = 0;
         float B = 0;
+        float pwm_cycle;
     private:
         //y:pwm幅，x:角度として，y = Ax+B
         

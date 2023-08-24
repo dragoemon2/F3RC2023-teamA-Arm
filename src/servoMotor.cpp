@@ -1,7 +1,7 @@
 #include <mbed.h>
 #include "servoMotor.hpp"
 
-ServoMotor::ServoMotor(PinName pin, float pwm_cycle, float pulse_width_min, float pulse_width_max, float range): pwmOut(pin), range(range)
+ServoMotor::ServoMotor(PinName pin, float pwm_cycle, float pulse_width_min, float pulse_width_max, float range): pwmOut(pin), range(range), pwm_cycle(pwm_cycle)
 {
     pwmOut.period_us(int(1000*pwm_cycle));
     A = 1000*(pulse_width_max-pulse_width_min)/range;
@@ -9,6 +9,7 @@ ServoMotor::ServoMotor(PinName pin, float pwm_cycle, float pulse_width_min, floa
 }
 
 float ServoMotor::convert(float point){
+    
     if(point < 0){
         point = 0;
     }else if(point > range){
